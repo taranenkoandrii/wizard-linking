@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+select{
+  background: url(assets/images/img.png) no-repeat;
+  background-size: 12px;
+  background-position: right 10px center; /* Change the px value here to change the distance */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding : 4px 25px
+}

@@ -1,0 +1,106 @@
+<div class="first-step">
+  <div class="step-header">
+    <p class="font-medium text-gray-900 text-lg">Essential Information</p>
+    <p class="text-gray-500 text-sm">The essential fields of an advertiser account. </p>
+  </div>
+
+  <div class="step-content w-full">
+    <form [formGroup]="basicInfoForm" class="w-full">
+      <div class="input-container">
+        <label for="name" class="block text-sm font-medium text-gray-700">Campaign Name</label>
+        <input
+          formControlName="name"
+          type="text" name="name" id="name"
+          class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-12 sm:text-sm border border-gray-300 rounded-md"
+          placeholder="Adidas">
+        <div
+          *ngIf="basicInfoForm.get('name')?.touched && !basicInfoForm.get('name')?.valid"
+          class="text-xs text-red-500"
+        >
+          Name is required
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="name" class="block text-sm font-medium text-gray-700">Campaign Network</label>
+        <div class="network-list flex gap-x-3">
+          <div
+            *ngFor="let item of networks"
+            class="network-list-item flex flex-col gap-y-1 items-center"
+            (click)="chooseNetwork(item)"
+          >
+            <div
+              class="network-list-item-image w-16 h-16 bg-gray-200 rounded-xl flex justify-center items-center"
+              [ngClass]="{'currentNetwork': isCurrentNetwork(item)}"
+            >
+              <img class="w-8 h-8" src="assets/images/youtube.png" alt="img">
+<!--             TODO insert image -->
+            </div>
+            <div class="network-list-item-label text-gray-400 text-xs">{{ item.label }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label class="block text-sm font-medium text-gray-700">Account</label>
+        <select
+          formControlName="account"
+          class="w-full text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 block py-2 pl-3 pr-12 sm:text-sm border border-gray-300 rounded-md"
+        >
+          <option value="init" disabled selected>Select Account</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+
+      <div class="input-container">
+        <label for="budget" class="block text-sm font-medium text-gray-700">budget</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input
+            type="text"
+            formControlName="budget"
+            id="budget"
+            class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-12 sm:text-sm border border-gray-300 rounded-md"
+            placeholder="0.00"
+          >
+          <div
+            *ngIf="basicInfoForm.get('budget')?.touched && !basicInfoForm.get('budget')?.valid"
+            class="text-xs text-red-500"
+          >
+            Budget is a numeric value
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center">
+            <label for="currency" class="sr-only">Currency</label>
+            <select
+              formControlName="currency"
+              id="currency"
+              name="currency"
+              class="focus:ring-indigo-500 focus:border-indigo-500 h-full py-2 pl-3 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md bg-gray-300"
+            >
+              <option>USD</option>
+              <option>CAD</option>
+              <option>EUR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label class="block text-sm font-medium text-gray-700">Emails</label>
+          <input
+            class="form-control focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-12 sm:text-sm border border-gray-300 rounded-md"
+            [(ngModel)]="email"
+            [ngModelOptions]="{standalone: true}"
+          >
+        <ng-container *ngIf="!getEmails().value.length">
+          <span class="block w-full text-xs my-2">No Emails</span>
+        </ng-container>
+        <div class="emails-list" *ngFor="let email of getEmails().value">
+          <div class="email block w-full text-sm border-b border-gray-300 my-2">{{ email }}</div>
+        </div>
+        <button class="border-gray-300 border text-gray-700 font-normal py-2 px-4 rounded" (click)="addEmail()">
+          Add email
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

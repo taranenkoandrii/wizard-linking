@@ -1,0 +1,38 @@
+<div>
+  <nav class="border-0 mx-auto lg:px-8" aria-label="Progress">
+    <ol role="list" class="nav-list">
+      <li
+        *ngFor="let step of stepsArray; let i = index"
+        class="relative overflow-hidden lg:flex-1"
+      >
+        <div class="border-0 border-gray-300 overflow-hidden rounded-b-md">
+          <a href="#" class="group">
+            <span class="px-6 py-4 flex items-start text-sm font-medium lg:pl-9">
+              <span class="flex-shrink-0">
+                <span
+                  [ngClass]="{'current-step': activeStep === i}"
+                  class="w-10 h-10 flex items-center justify-center border-2 rounded-full"
+                >
+                  <span [ngClass]="{'current-step': activeStep === i}" class="">{{ '0' + (step + 1)}}</span>
+                </span>
+              </span>
+              <span class="ml-4 min-w-0 flex flex-col justify-center w-28 h-10">
+                <span
+                  [ngClass]="{'current-step': activeStep === i}"
+                  class="text-xs font-semibold tracking-wide uppercase"
+                >Basic Information</span>
+              </span>
+            </span>
+          </a>
+
+          <!-- Separator -->
+          <div *ngIf="step" class="hidden absolute top-0 left-0 w-3 lg:block" aria-hidden="true">
+            <svg width="25" height="72" viewBox="0 0 25 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.5 73L24.5 36L0.5 -1" stroke="#D1D5DB" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</div>
