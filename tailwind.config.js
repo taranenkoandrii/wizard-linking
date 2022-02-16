@@ -1,9 +1,19 @@
 module.exports = {
-  mode: 'jit',
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.{html,ts}']
-  },
+  // mode: 'jit',
+  // purge: {
+  //   enabled: true,
+  //   content: ['./src/**/*.{html,ts}']
+  // },
+  // darkMode: false, // or 'media' or 'class'
+  // theme: {
+  //   extend: {},
+  // },
+  // variants: {
+  //   extend: {},
+  // },
+  // plugins: [
+  // ],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},

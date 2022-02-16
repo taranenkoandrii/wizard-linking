@@ -1,0 +1,8 @@
+.nav-list {
+  height: 72px;
+  @apply border rounded-md overflow-hidden lg:flex border-gray-200;
+}
+
+.current-step {
+  @apply text-indigo-600 border-indigo-600;
+}

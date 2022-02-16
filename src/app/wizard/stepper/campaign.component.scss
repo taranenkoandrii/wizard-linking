@@ -1,0 +1,25 @@
+.nav-list {
+  height: 72px;
+  @apply border rounded-md overflow-hidden lg:flex border-gray-200;
+}
+
+.stepper-body {
+  width: calc(100% - 64px);
+  margin: 32px;
+
+  .stepper-body-buttons {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 12px;
+  }
+}
+
+.step {
+  &-header {
+    margin-bottom: 24px;
+  }
+}
+
+.input-container {
+  margin-bottom: 24px;
+}
